@@ -1,5 +1,39 @@
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.main {
+  margin: 50px auto;
+  position: relative;
+  overflow: hidden;
+  width: 500px;
+  height: 700px;
+  border: 1px solid #000;
+}
+
+.tetris {
+  width: 500px;
+  height: 900px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: absolute;
+  bottom: 0;
+  background-color: #fff;
+}
+
+.excel {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+}
+
+.figure, .set {
+  background-color: #1e488c;
 }
 /*# sourceMappingURL=style.css.map */
