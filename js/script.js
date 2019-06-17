@@ -1,19 +1,12 @@
 let overlay = document.querySelector('.overlay');
 let modal = document.querySelector('.modal');
-let speed = 0;
+let hidden = document.querySelectorAll('.hidden');
+let speed = 400;
+
+let bestscore = [];
 
 modal.addEventListener('click', function(e){
-  if(e.target.classList.contains('easy')){
-    speed = 900;
-  }
-  else if(e.target.classList.contains('normal')){
-    speed = 600;
-  }
-  else if(e.target.classList.contains('hard')){
-    speed = 300;
-  }
-
-  if(e.target.classList.contains('button')){
+  if(e.target.classList.contains('start-button')){
     modal.style.display = 'none';
     overlay.style.display = 'none';
     startGame();
@@ -194,6 +187,7 @@ function move(){
           if(count == 10){
             score += 10;
             input.value = `Ваши очки: ${score}`;
+
             for(let m=1; m<11; m++){
               document.querySelector(`[posX="${m}"][posY="${i}"]`).classList.remove('set')
             }
@@ -214,10 +208,24 @@ function move(){
         }
       }
     }
+
+    function EndGame(){
+      clearInterval(interval);
+        alert('GAME OVER');
+        modal.style.display = '';
+        overlay.style.display = '';
+        hidden[0].style.display = 'block';
+        hidden[1].style.display = 'block';
+        hidden[2].style.display = 'block';
+        hidden[3].style.display = 'block';
+        tetris.parentNode.removeChild(tetris);
+        let playername = document.querySelector('.newbest');
+        bestscore.push(`${playername}`, score);
+    }
+
     for(let n=1; n<11; n++){
       if(document.querySelector(`[posX="${n}"][posY="15"]`).classList.contains('set')){
-        clearInterval(interval);
-        alert('GAME OVER');
+        EndGame();
         break;
       }
     }
@@ -228,6 +236,8 @@ function move(){
 let interval = setInterval(() => {
   move();
 }, speed);
+
+
 
 let flag = true;
 
