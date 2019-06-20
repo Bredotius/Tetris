@@ -57,7 +57,8 @@ let mainArr = [
     //поворот на 270 градусов
     [[-1,1],[0,0],[1,-1],[2,-2]],
     //360
-    [[1,-1],[0,0],[-1,1],[-2,2]]],
+    [[1,-1],[0,0],[-1,1],[-2,2]],
+    '#f9ca24'],
   //квадрат
   [[1,0],[0,1],[1,1],
     //поворот на 90 градусов
@@ -67,7 +68,8 @@ let mainArr = [
     //поворот на 270 градусов
     [[0,0],[0,0],[0,0],[0,0]],
     //360
-    [[0,0],[0,0],[0,0],[0,0]]],
+    [[0,0],[0,0],[0,0],[0,0]],
+    '#f0932b'],
   //буква L
   [[1,0],[0,1],[0,2],
     //поворот на 90 градусов
@@ -77,8 +79,8 @@ let mainArr = [
     //поворот на 270 градусов
     [[-1,0],[0,-1],[2,-2],[1,-1]],
     //360
-    [[0,-1],[0,-1],[-2,0],[-2,0]]
-  ],
+    [[0,-1],[0,-1],[-2,0],[-2,0]],
+    '#eb4d4b'],
   //обратная L
   [[1,0],[1,1],[1,2],
     //поворот на 90 градусов
@@ -88,7 +90,8 @@ let mainArr = [
     //поворот на 270 градусов
     [[2,0],[0,0],[1,-1],[1,-1]],
     //360
-    [[-2,0],[1,-1],[0,0],[-1,1]]],
+    [[-2,0],[1,-1],[0,0],[-1,1]],
+    '#6ab04c'],
   //ступенька
   [[1,0],[2,0],[1,1],
     //поворот на 90 градусов
@@ -98,7 +101,8 @@ let mainArr = [
     //поворот на 270 градусов
     [[1,-1],[1,-1],[1,-1],[0,0]],
     //360
-    [[-2,0],[0,-1],[0,-1],[-1,-1]]],
+    [[-2,0],[0,-1],[0,-1],[-1,-1]],
+    '#7ed6df'],
   //Z
   [[1,0],[1,1],[2,1],
     //поворот на 90 градусов
@@ -108,7 +112,8 @@ let mainArr = [
     //поворот на 270 градусов
     [[2,-1],[0,0],[1,-1],[-1,0]],
     //360
-    [[-2,0],[0,-1],[-1,0],[1,-1]]],
+    [[-2,0],[0,-1],[-1,0],[1,-1]],
+    '#e056fd'],
   //обратная z
   [[1,0],[-1,1],[0,1],
     //поворот на 90 градусов
@@ -118,7 +123,8 @@ let mainArr = [
     //поворот на 270 градусов
     [[0,-1],[-1,0],[2,-1],[1,0]],
     //360
-    [[0,0],[1,-1],[-2,0],[-1,-1]]]
+    [[0,0],[1,-1],[-2,0],[-1,-1]],
+    '#686de0']
 ]
 
 let currentFigure = 0;
@@ -143,7 +149,6 @@ function create(){
   for(let i=0; i<figureBody.length; i++){
     figureBody[i].classList.add('figure');
   }
-
 }
 
 create();
@@ -169,6 +174,7 @@ function move(){
   }  
   if(moveFlag){
     for(let i=0; i<figureBody.length; i++){
+      figureBody[i].style.backgroundColor = null;
       figureBody[i].classList.remove('figure');
     }
     figureBody = [
@@ -179,11 +185,13 @@ function move(){
     ]
     for(let i=0; i<figureBody.length; i++){
       figureBody[i].classList.add('figure');
+      figureBody[i].style.backgroundColor = `${mainArr[currentFigure][7]}`;
     }
   }
   else{
     for(let i=0; i<figureBody.length; i++){
       figureBody[i].classList.remove('figure');
+      figureBody[i].style.backgroundColor = null;
       figureBody[i].classList.add('set');
     }
     for(let i =1; i<15; i++){
@@ -257,6 +265,7 @@ window.addEventListener('keydown', function(e){
 
     if (flag){
       for(let i=0; i<figureBody.length; i++){
+        figureBody[i].style.backgroundColor = '#fff';
         figureBody[i].classList.remove('figure');
       }
 
@@ -264,6 +273,7 @@ window.addEventListener('keydown', function(e){
 
       for(let i=0; i<figureBody.length; i++){
         figureBody[i].classList.add('figure');
+        figureBody[i].style.backgroundColor = `${mainArr[currentFigure][7]}`;
       }
     }
   }
@@ -286,6 +296,7 @@ window.addEventListener('keydown', function(e){
 
     if (flag == true){
       for(let i=0; i<figureBody.length; i++){
+        figureBody[i].style.backgroundColor = '#fff';
         figureBody[i].classList.remove('figure');
       }
 
@@ -293,6 +304,7 @@ window.addEventListener('keydown', function(e){
 
       for(let i=0; i<figureBody.length; i++){
         figureBody[i].classList.add('figure');
+        figureBody[i].style.backgroundColor = `${mainArr[currentFigure][7]}`;
       }
 
       if(rotate<4){

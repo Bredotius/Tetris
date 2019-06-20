@@ -33,7 +33,7 @@
   border: 1px solid #ccc;
 }
 
-.figure, .set {
+.set {
   background-color: #1e488c;
 }
 
@@ -48,13 +48,14 @@ input {
   padding: 20px;
   position: absolute;
   top: 200px;
-  right: 200px;
+  left: calc(50% + 260px);
 }
 
 .modal {
   position: fixed;
   text-transform: uppercase;
-  width: 500pxh500;
+  width: 500px;
+  height: 500px;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
